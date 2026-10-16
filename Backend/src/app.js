@@ -25,4 +25,14 @@ app.post('/create-post', upload.single("image"), async(req,res)=>{
 })
 
 
+app.get('/feed', async(req,res)=>{
+    const post = await posts.find()
+
+    res.status(201).json({
+        message: "Feed: ",
+        post
+    })
+})
+
+
 module.exports = app
