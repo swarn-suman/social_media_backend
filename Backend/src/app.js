@@ -3,8 +3,10 @@ const app = express()
 const multer = require('multer')
 const uploadFile = require('./services/storage')
 const posts = require('./models/posts')
+const cors = require('cors')
 
 app.use(express.json())
+app.use(cors())
 const upload = multer({storage: multer.memoryStorage()})
 
 
@@ -30,7 +32,7 @@ app.get('/feed', async(req,res)=>{
 
     res.status(201).json({
         message: "Feed: ",
-        post
+        posts: post
     })
 })
 
